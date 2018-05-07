@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="1828" y="1282"/>
         </scene>
-        <!--First View Controller-->
+        <!--Status View Controller-->
         <scene sceneID="RKY-wn-AbQ">
             <objects>
-                <viewController id="mwH-Gq-bov" customClass="FirstViewController" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatusViewController" id="mwH-Gq-bov" customClass="StatusViewController" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OTF-Zk-MQQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
