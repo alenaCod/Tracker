@@ -8,10 +8,22 @@
 
 import UIKit
 
+
 class ProfileViewController: UIViewController {
 
-    override func viewDidLoad() {
+  @IBOutlet weak var nameField: UITextField!
+  
+  @IBOutlet weak var heightField: UITextField!
+  
+  @IBOutlet weak var weightField: UITextField!
+  
+  
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
+    _ = Int(self.heightField.text!)
+    _ = Double(self.weightField.text!)
+    _ = String(self.nameField.text!)
 
         // Do any additional setup after loading the view.
     }

@@ -101,6 +101,11 @@
                         <viewLayoutGuide key="safeArea" id="1cR-3c-Thl"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="7XX-9t-3WH"/>
+                    <connections>
+                        <outlet property="heightField" destination="WPs-81-6eY" id="aNU-Yp-0Bn"/>
+                        <outlet property="nameField" destination="jFp-JS-z1s" id="zkK-Rs-42g"/>
+                        <outlet property="weightField" destination="ikt-FL-3Gx" id="Yas-MM-lHs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yu-kb-5cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
