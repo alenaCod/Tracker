@@ -1,5 +1,5 @@
 //
-//  ThirdViewController.swift
+//  ProfileViewController.swift
 //  Tracker
 //
 //  Created by Sveta on 5/2/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

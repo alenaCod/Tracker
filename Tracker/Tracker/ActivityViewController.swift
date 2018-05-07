@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  ActivityViewController.swift
 //  Tracker
 //
 //  Created by Sveta on 4/29/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ActivityViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()

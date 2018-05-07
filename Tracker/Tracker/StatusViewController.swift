@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  StatusViewController.swift
 //  Tracker
 //
 //  Created by Sveta on 4/29/18.
