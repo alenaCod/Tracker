@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Activity View Controller-->
+        <!--Activity-->
         <scene sceneID="NWI-ux-6og">
             <objects>
                 <viewController id="vDL-qy-aRW" customClass="ActivityViewController" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="LSP-u4-bqE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="s87-5I-LVa"/>
+                    <navigationItem key="navigationItem" title="Activity" id="s87-5I-LVa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7q-0u-ZyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -38,10 +38,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5O-Lf-cYb" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jFp-JS-z1s">
-                                                <rect key="frame" x="62" y="134" width="250" height="40"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jFp-JS-z1s">
+                                                <rect key="frame" x="62.5" y="78" width="250" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="aj4-ub-OvB"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="k6G-yu-SSl"/>
@@ -50,8 +50,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ikt-FL-3Gx">
-                                                <rect key="frame" x="62" y="369" width="250" height="40"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ikt-FL-3Gx">
+                                                <rect key="frame" x="62.5" y="255" width="250" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Vb1-0E-f4Z"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="sCe-cX-3Yd"/>
@@ -60,8 +60,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WPs-81-6eY">
-                                                <rect key="frame" x="62" y="254" width="250" height="40"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WPs-81-6eY">
+                                                <rect key="frame" x="62.5" y="168" width="250" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="9dR-e5-Tck"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="M09-Ps-w9D"/>
@@ -70,19 +70,38 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afp-gV-Dt3">
+                                                <rect key="frame" x="62.5" y="428" width="250" height="58"/>
+                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2za-ho-0ZR"/>
+                                                    <constraint firstAttribute="height" constant="58" id="DQZ-E3-9PW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButton:" destination="miE-2x-3hJ" eventType="touchUpInside" id="KaW-sP-ycV"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="WPs-81-6eY" firstAttribute="top" secondItem="jFp-JS-z1s" secondAttribute="bottom" constant="80" id="ERh-3d-yn3"/>
+                                            <constraint firstItem="afp-gV-Dt3" firstAttribute="leading" secondItem="ikt-FL-3Gx" secondAttribute="leading" id="85Z-hN-kuH"/>
+                                            <constraint firstItem="WPs-81-6eY" firstAttribute="top" secondItem="jFp-JS-z1s" secondAttribute="bottom" constant="50" id="ERh-3d-yn3"/>
                                             <constraint firstItem="WPs-81-6eY" firstAttribute="centerX" secondItem="H5O-Lf-cYb" secondAttribute="centerX" id="I33-lG-hEj"/>
-                                            <constraint firstItem="jFp-JS-z1s" firstAttribute="top" secondItem="H5O-Lf-cYb" secondAttribute="top" constant="134" id="I5i-oP-6js"/>
+                                            <constraint firstItem="jFp-JS-z1s" firstAttribute="top" secondItem="H5O-Lf-cYb" secondAttribute="top" constant="78" id="I5i-oP-6js"/>
                                             <constraint firstItem="jFp-JS-z1s" firstAttribute="centerX" secondItem="H5O-Lf-cYb" secondAttribute="centerX" id="a9E-Hi-3cA"/>
+                                            <constraint firstItem="afp-gV-Dt3" firstAttribute="top" secondItem="ikt-FL-3Gx" secondAttribute="bottom" constant="133" id="bl4-Hh-kXJ"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="afp-gV-Dt3" secondAttribute="trailing" constant="20" symbolic="YES" id="cAH-yr-3WG"/>
                                             <constraint firstItem="ikt-FL-3Gx" firstAttribute="centerX" secondItem="H5O-Lf-cYb" secondAttribute="centerX" id="iOM-ZD-G5r"/>
-                                            <constraint firstItem="ikt-FL-3Gx" firstAttribute="top" secondItem="WPs-81-6eY" secondAttribute="bottom" constant="75" id="qb4-Si-XZT"/>
+                                            <constraint firstItem="ikt-FL-3Gx" firstAttribute="top" secondItem="WPs-81-6eY" secondAttribute="bottom" constant="47" id="qb4-Si-XZT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="H5O-Lf-cYb" firstAttribute="centerX" secondItem="9I7-w3-nht" secondAttribute="centerX" id="2lE-bu-SVH"/>
                                     <constraint firstItem="H5O-Lf-cYb" firstAttribute="centerY" secondItem="9I7-w3-nht" secondAttribute="centerY" id="3YG-HJ-y7Y"/>
                                     <constraint firstItem="H5O-Lf-cYb" firstAttribute="centerX" secondItem="9I7-w3-nht" secondAttribute="centerX" id="AL3-HC-K0W"/>
                                     <constraint firstItem="H5O-Lf-cYb" firstAttribute="leading" secondItem="9I7-w3-nht" secondAttribute="leading" id="B7q-lx-NB2"/>
@@ -92,7 +111,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="9I7-w3-nht" secondAttribute="bottom" id="YfW-n7-8ue"/>
                             <constraint firstItem="9I7-w3-nht" firstAttribute="leading" secondItem="1cR-3c-Thl" secondAttribute="leading" id="hAR-FC-Qx3"/>
@@ -105,6 +124,7 @@
                     <connections>
                         <outlet property="heightField" destination="WPs-81-6eY" id="aNU-Yp-0Bn"/>
                         <outlet property="nameField" destination="jFp-JS-z1s" id="zkK-Rs-42g"/>
+                        <outlet property="scrollView" destination="9I7-w3-nht" id="kF7-jc-GqJ"/>
                         <outlet property="weightField" destination="ikt-FL-3Gx" id="Yas-MM-lHs"/>
                     </connections>
                 </viewController>
@@ -112,7 +132,7 @@
             </objects>
             <point key="canvasLocation" x="1828" y="1281.4092953523239"/>
         </scene>
-        <!--Status View Controller-->
+        <!--Status-->
         <scene sceneID="RKY-wn-AbQ">
             <objects>
                 <viewController id="mwH-Gq-bov" customClass="StatusViewController" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -122,7 +142,7 @@
                         <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="jri-3L-tyG"/>
                     </view>
-                    <navigationItem key="navigationItem" id="obe-Fk-8sU"/>
+                    <navigationItem key="navigationItem" title="Status" id="obe-Fk-8sU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AkE-gu-h2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,7 +171,7 @@
         <scene sceneID="Q07-ZU-cnd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YZr-VE-6T1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Status" id="RSq-KO-LF8"/>
+                    <tabBarItem key="tabBarItem" title="Status" image="home" selectedImage="home" id="RSq-KO-LF8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ieF-My-kKi">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -171,7 +191,7 @@
         <scene sceneID="hxm-dg-ON1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="61M-5Y-JaL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activity" id="Qza-ka-ga9"/>
+                    <tabBarItem key="tabBarItem" title="Activity" image="flag" selectedImage="flag" id="Qza-ka-ga9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ydR-dN-zpn">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -190,7 +210,7 @@
         <scene sceneID="SBN-a8-1Wj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YEE-2q-aMb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="E1z-BY-HrL"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="human" selectedImage="human" id="E1z-BY-HrL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eaK-aL-Dwf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -206,4 +226,9 @@
             <point key="canvasLocation" x="889" y="1282"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="flag" width="22" height="24"/>
+        <image name="home" width="28" height="26"/>
+        <image name="human" width="23" height="15"/>
+    </resources>
 </document>
