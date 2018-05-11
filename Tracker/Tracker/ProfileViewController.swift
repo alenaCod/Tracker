@@ -11,6 +11,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 let currentUser = User.sharedInstance
+  
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var nameField: UITextField!
   @IBOutlet weak var heightField: UITextField!
@@ -27,20 +28,8 @@ let currentUser = User.sharedInstance
     configureTapGesture()
     
     // Observe keyboard change
-    
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//
-    // Add touch gesture for contentView
-//    self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
-  //}
-
-    
-//    _ = Int(self.heightField.text ?? "0")
-//    _ = Double(self.weightField.text!)
-//    _ = String(self.nameField.text!)
-
-        // Do any additional setup after loading the view.
     }
 
   override func didReceiveMemoryWarning() {
@@ -53,11 +42,15 @@ let currentUser = User.sharedInstance
     view.endEditing(true)
     
     currentUser.name = nameField.text ?? ""
+    currentUser.height = heightField.text?.toInt()
+    currentUser.weight = weightField.text?.toDouble()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     nameField.text = currentUser.name
+    heightField.text = currentUser.height?.toString()
+    weightField.text = currentUser.weight?.toString()
     
     print("viewWillAppear user name: ", currentUser.name)
     print("viewWillAppear user he: ", currentUser.height)
@@ -83,7 +76,7 @@ let currentUser = User.sharedInstance
     guard activeField != nil else {
       return
     }
-    
+
     activeField?.resignFirstResponder()
     activeField = nil
   }
@@ -98,104 +91,44 @@ let currentUser = User.sharedInstance
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     // view.endEditing(true)
       textField.resignFirstResponder()
       return true
     }
   }
 
 extension ProfileViewController {
+
   @objc func keyboardWillShow(notification:NSNotification){
+    self.scrollView.isScrollEnabled = true
+    var info = notification.userInfo!
+    let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+    let contentInsets:UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+    self.scrollView.contentInset = contentInsets
+    self.scrollView.scrollIndicatorInsets = contentInsets
     
-    var userInfo = notification.userInfo!
-    var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-    keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-    
-    var contentInset:UIEdgeInsets = self.scrollView.contentInset
-    contentInset.bottom = keyboardFrame.size.height
-    self.scrollView.contentInset = contentInset
+    var aRect: CGRect = self.view.frame
+    aRect.size.height -= keyboardSize!.height
+    if let activeField = self.activeField {
+      if (!aRect.contains(activeField.frame.origin)){
+        self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+      }
+    }
   }
   
-  @objc func keyboardWillHide(notification:NSNotification){
+   @objc func keyboardWillHide(notification:NSNotification){
     
-    let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-    self.scrollView.contentInset = contentInset
+    var info = notification.userInfo!
+    let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+    let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+    self.scrollView.contentInset = contentInsets
+    self.scrollView.scrollIndicatorInsets = contentInsets
+    
+    self.scrollView.isScrollEnabled = false
+
   }
-  
-//  @objc func keyboardWillShow(notification:NSNotification){
-//    let value = -70
-//
-//    let contentInset = UIEdgeInsets(top: CGFloat(value), left: 0, bottom: 0, right: 0)
-//    UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
-//      self?.scrollView.contentInset = contentInset
-//      }, completion: nil)
-//  }
-//
-//  @objc func keyboardWillHide(notification:NSNotification){
-//    let contentInset = UIEdgeInsets.zero
-//    UIView.animate(withDuration: 0.3, animations: { [weak self] () -> Void in
-//      self?.scrollView.contentInset = contentInset
-//      }, completion: nil)
-//  }
-  
-  
-  
-  
-//  @objc func keyboardWillShow(notification: NSNotification) {
-//    let userInfo: NSDictionary = notification.userInfo! as NSDictionary
-//    let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue
-//    let keyboardSize = keyboardInfo.cgRectValue.size
-//    let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-//    scrollView.contentInset = contentInsets
-//    scrollView.scrollIndicatorInsets = contentInsets
-//  }
-//
-//  @objc func keyboardWillHide(notification: NSNotification) {
-//    scrollView.contentInset = .zero
-//    scrollView.scrollIndicatorInsets = .zero
-//  }
-//  func keyboardWillShow(notification: NSNotification) {
-//    if keyboardHeight != nil {
-//      return
-//    }
-//
-//    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//      keyboardHeight = keyboardSize.height
-//
-//      // so increase contentView's height by keyboard height
-//      UIView.animate(withDuration: 0.3, animations: {
-//        self.constraintContentHeight.constant += self.keyboardHeight
-//      })
-//
-//      // move if keyboard hide input field
-//      let distanceToBottom = self.scrollView.frame.size.height - (activeField?.frame.origin.y)! - (activeField?.frame.size.height)!
-//      let collapseSpace = keyboardHeight - distanceToBottom
-//
-//      if collapseSpace < 0 {
-//        // no collapse
-//        return
-//      }
-//
-//      // set new offset for scroll view
-//      UIView.animate(withDuration: 0.3, animations: {
-//        // scroll to the position above keyboard 10 points
-//        self.scrollView.contentOffset = CGPoint(x: self.lastOffset.x, y: collapseSpace + 10)
-//      })
-//    }
-//  }
-//
-//  func keyboardWillHide(notification: NSNotification) {
-//    UIView.animate(withDuration: 0.3) {
-//      self.constraintContentHeight.constant -= self.keyboardHeight
-//
-//      self.scrollView.contentOffset = self.lastOffset
-//    }
-//
-//    keyboardHeight = nil
-//  }
 }
 
-
-  
 
     /*
     // MARK: - Navigation

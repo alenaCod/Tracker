@@ -12,11 +12,7 @@ import UIKit
  final class User {
   static let sharedInstance = User()
   private let defaults: UserDefaults
-  
-//  var name:String = ""
-//  var height:Int = 0
-//  var weight:Double = 0.0
-  
+
   private init() {
     defaults = UserDefaults.standard
   }
@@ -50,12 +46,4 @@ import UIKit
       defaults.synchronize()
     }
   }
-//  init (name: String,height:Int,weight:Double){
-//    self.name = name
-//    self.height = height
-//    self.weight = weight// it has a chance so its value can be set!
-//  }
-  
-  
-
 }

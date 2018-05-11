@@ -51,7 +51,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ikt-FL-3Gx">
-                                                <rect key="frame" x="62.5" y="255" width="250" height="40"/>
+                                                <rect key="frame" x="62.5" y="254" width="250" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Vb1-0E-f4Z"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="sCe-cX-3Yd"/>
@@ -61,7 +61,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WPs-81-6eY">
-                                                <rect key="frame" x="62.5" y="168" width="250" height="40"/>
+                                                <rect key="frame" x="62.5" y="166" width="250" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="9dR-e5-Tck"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="M09-Ps-w9D"/>
@@ -71,15 +71,15 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afp-gV-Dt3">
-                                                <rect key="frame" x="62.5" y="428" width="250" height="58"/>
-                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="62.5" y="487" width="250" height="40"/>
+                                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="2za-ho-0ZR"/>
-                                                    <constraint firstAttribute="height" constant="58" id="DQZ-E3-9PW"/>
+                                                    <constraint firstAttribute="height" constant="40" id="4NZ-Te-IuJ"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="N1a-TH-fYX"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                                 <state key="normal" title="Save">
-                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="saveButton:" destination="miE-2x-3hJ" eventType="touchUpInside" id="KaW-sP-ycV"/>
@@ -88,15 +88,14 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="afp-gV-Dt3" firstAttribute="leading" secondItem="ikt-FL-3Gx" secondAttribute="leading" id="85Z-hN-kuH"/>
-                                            <constraint firstItem="WPs-81-6eY" firstAttribute="top" secondItem="jFp-JS-z1s" secondAttribute="bottom" constant="50" id="ERh-3d-yn3"/>
+                                            <constraint firstItem="WPs-81-6eY" firstAttribute="top" secondItem="jFp-JS-z1s" secondAttribute="bottom" constant="48" id="ERh-3d-yn3"/>
                                             <constraint firstItem="WPs-81-6eY" firstAttribute="centerX" secondItem="H5O-Lf-cYb" secondAttribute="centerX" id="I33-lG-hEj"/>
                                             <constraint firstItem="jFp-JS-z1s" firstAttribute="top" secondItem="H5O-Lf-cYb" secondAttribute="top" constant="78" id="I5i-oP-6js"/>
                                             <constraint firstItem="jFp-JS-z1s" firstAttribute="centerX" secondItem="H5O-Lf-cYb" secondAttribute="centerX" id="a9E-Hi-3cA"/>
-                                            <constraint firstItem="afp-gV-Dt3" firstAttribute="top" secondItem="ikt-FL-3Gx" secondAttribute="bottom" constant="133" id="bl4-Hh-kXJ"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="afp-gV-Dt3" secondAttribute="trailing" constant="20" symbolic="YES" id="cAH-yr-3WG"/>
                                             <constraint firstItem="ikt-FL-3Gx" firstAttribute="centerX" secondItem="H5O-Lf-cYb" secondAttribute="centerX" id="iOM-ZD-G5r"/>
-                                            <constraint firstItem="ikt-FL-3Gx" firstAttribute="top" secondItem="WPs-81-6eY" secondAttribute="bottom" constant="47" id="qb4-Si-XZT"/>
+                                            <constraint firstItem="afp-gV-Dt3" firstAttribute="centerX" secondItem="H5O-Lf-cYb" secondAttribute="centerX" id="kOE-6K-qfm"/>
+                                            <constraint firstAttribute="bottom" secondItem="afp-gV-Dt3" secondAttribute="bottom" constant="140" id="pyN-Gt-1MD"/>
+                                            <constraint firstItem="ikt-FL-3Gx" firstAttribute="top" secondItem="WPs-81-6eY" secondAttribute="bottom" constant="48" id="qb4-Si-XZT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
