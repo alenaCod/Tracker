@@ -28,8 +28,8 @@ let currentUser = User.sharedInstance
     configureTapGesture()
     
     // Observe keyboard change
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
   override func didReceiveMemoryWarning() {
@@ -71,7 +71,6 @@ let currentUser = User.sharedInstance
     weightField.delegate = self
   }
   
-  
   func returnTextView(gesture: UIGestureRecognizer) {
     guard activeField != nil else {
       return
@@ -95,39 +94,39 @@ let currentUser = User.sharedInstance
       textField.resignFirstResponder()
       return true
     }
-  }
-
-extension ProfileViewController {
-
-  @objc func keyboardWillShow(notification:NSNotification){
-    self.scrollView.isScrollEnabled = true
-    var info = notification.userInfo!
-    let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-    let contentInsets:UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
-    self.scrollView.contentInset = contentInsets
-    self.scrollView.scrollIndicatorInsets = contentInsets
-    
-    var aRect: CGRect = self.view.frame
-    aRect.size.height -= keyboardSize!.height
-    if let activeField = self.activeField {
-      if (!aRect.contains(activeField.frame.origin)){
-        self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
-      }
-    }
-  }
-  
-   @objc func keyboardWillHide(notification:NSNotification){
-    
-    var info = notification.userInfo!
-    let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-    let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-    self.scrollView.contentInset = contentInsets
-    self.scrollView.scrollIndicatorInsets = contentInsets
-    
-    self.scrollView.isScrollEnabled = false
-
-  }
 }
+
+//extension ProfileViewController {
+//
+//  @objc func keyboardWillShow(notification:NSNotification){
+//    self.scrollView.isScrollEnabled = true
+//    var info = notification.userInfo!
+//    let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+//    let contentInsets:UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+//    self.scrollView.contentInset = contentInsets
+//    self.scrollView.scrollIndicatorInsets = contentInsets
+//
+//    var aRect: CGRect = self.view.frame
+//    aRect.size.height -= keyboardSize!.height
+//    if let activeField = self.activeField {
+//      if (!aRect.contains(activeField.frame.origin)){
+//        self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+//      }
+//    }
+//  }
+//
+//   @objc func keyboardWillHide(notification:NSNotification){
+//
+//    var info = notification.userInfo!
+//    let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+//    let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+//    self.scrollView.contentInset = contentInsets
+//    self.scrollView.scrollIndicatorInsets = contentInsets
+//
+//    self.scrollView.isScrollEnabled = false
+//
+//  }
+//}
 
 
     /*
