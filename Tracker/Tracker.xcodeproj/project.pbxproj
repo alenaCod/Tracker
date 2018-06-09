@@ -18,6 +18,7 @@
 		29AB4AE72095ABD3002C399B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29AB4AE52095ABD3002C399B /* LaunchScreen.storyboard */; };
 		29AB4AF1209A3392002C399B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB4AF0209A3392002C399B /* ProfileViewController.swift */; };
 		29AB4AF5209A34E7002C399B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB4AF4209A34E7002C399B /* MainTabBarController.swift */; };
+		29D4BAAE20C551AB004A1A69 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BAAD20C551AB004A1A69 /* MapViewController.swift */; };
 		605C2FBD3F3435AC9FAC5165 /* Pods_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C86B8471E1ACBAE5B9BDB25 /* Pods_Tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		29AB4AE82095ABD3002C399B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29AB4AF0209A3392002C399B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		29AB4AF4209A34E7002C399B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		29D4BAAD20C551AB004A1A69 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3FA716368A9E10A061C0B1BD /* Pods-Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tracker/Pods-Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		49BCDDD5932B9BE90C9DB7AF /* Pods-Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tracker/Pods-Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		5C86B8471E1ACBAE5B9BDB25 /* Pods_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				29AB4ADC2095ABD1002C399B /* StatusViewController.swift */,
 				29AB4ADE2095ABD1002C399B /* ActivityViewController.swift */,
 				29AB4AF0209A3392002C399B /* ProfileViewController.swift */,
+				29D4BAAD20C551AB004A1A69 /* MapViewController.swift */,
 				293964FF20A105890084059F /* User.swift */,
 				295FB6E020A4BC7000E751F3 /* Extension */,
 				29AB4AF4209A34E7002C399B /* MainTabBarController.swift */,
@@ -228,6 +231,7 @@
 			files = (
 				2939650020A105890084059F /* User.swift in Sources */,
 				29AB4ADF2095ABD1002C399B /* ActivityViewController.swift in Sources */,
+				29D4BAAE20C551AB004A1A69 /* MapViewController.swift in Sources */,
 				29AB4ADB2095ABD1002C399B /* AppDelegate.swift in Sources */,
 				29AB4AF5209A34E7002C399B /* MainTabBarController.swift in Sources */,
 				295FB6DD20A4B84700E751F3 /* String+Trackers.swift in Sources */,
