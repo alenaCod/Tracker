@@ -37,6 +37,11 @@ let currentUser = User.sharedInstance
         // Dispose of any resources that can be recreated.
     }
   
+  @IBAction func save(_ sender: UIBarButtonItem) {
+    currentUser.name = nameField.text ?? ""
+    currentUser.height = heightField.text?.toInt()
+    currentUser.weight = weightField.text?.toDouble()
+  }
   
   @IBAction func saveButton(_ sender: UIButton) {
     view.endEditing(true)
