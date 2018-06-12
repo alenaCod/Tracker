@@ -151,6 +151,11 @@
 				TargetAttributes = {
 					29AB4AD62095ABD1002C399B = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -390,7 +395,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Tracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pf.Cape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3b867824-f96f-4bb4-b028-0a41124d93d1";
 				PROVISIONING_PROFILE_SPECIFIER = "PN WILD";
@@ -411,7 +416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Tracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pf.Cape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3b867824-f96f-4bb4-b028-0a41124d93d1";
 				PROVISIONING_PROFILE_SPECIFIER = "PN WILD";
