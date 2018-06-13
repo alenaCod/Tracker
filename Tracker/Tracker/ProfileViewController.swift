@@ -10,7 +10,8 @@ import UIKit
 
 
 class ProfileViewController: UIViewController {
-let currentUser = User.sharedInstance
+
+  let currentUser = User.sharedInstance
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var nameField: UITextField!

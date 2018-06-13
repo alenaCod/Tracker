@@ -9,46 +9,79 @@
 import UIKit
 
 class ActivityViewController: UIViewController {
-
-//  @IBOutlet weak var bikeButton: UIButton!
-//  
-//  @IBOutlet weak var runButton: UIButton!
-//  
-//  @IBOutlet weak var walkButton: UIButton!
-//  
-//  @IBOutlet weak var carButton: UIButton!
+  
+  let currentActivity = CurrentActivity.sharedInstance
+  @IBOutlet weak var timerLabel: UILabel!
+  
+  @IBOutlet weak var startB: UIButton!
+  
+  var countTimer = Timer()
+  var second = 0
+  
+  @IBAction func stopButton(_ sender: Any) {
+    countTimer.invalidate()
+    second = 0
+    timerLabel.text = timeFormatted(_second: second)
+  }
+  
+  @IBAction func startButton(_ sender: Any) {
+    countTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ActivityViewController.updateTimer), userInfo: nil, repeats: true)
+  }
+  
+  @objc func updateTimer() {
+    second += 1
+    timerLabel.text = timeFormatted(_second: second)
+  }
+  
+  func timeFormatted(_second: Int) -> String {
+    let seconds: Int = second % 60
+    let minutes: Int = (second / 60) % 60
+    let hours: Int = second / 3600
+    return String(format: "%02d:%02d:%02d",hours, minutes, seconds)
+  }
+  
+  @IBAction func bikeButton(_ sender: UIButton) {
+   currentActivity.type = 1
+    activeButton()
+  }
+  
+  @IBAction func runButton(_ sender: UIButton) {
+   currentActivity.type = 2
+    activeButton()
+  }
+  
+  @IBAction func walk(_ sender: UIButton) {
+    currentActivity.type = 3
+    activeButton()
+  }
+  
+  @IBAction func car(_ sender: UIButton) {
+    currentActivity.type = 4
+    activeButton()
+  }
+  
+  func activeButton() {
+    startB.isHidden = false
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-//    let image1 = UIImage(named: "bike.png")
-//    let button = UIButton(type: .custom)
-//    button.imageView?.contentMode = .scaleAspectFit
-//    button.setImage(image1, for: .normal)
-//    
-//    let image2 = UIImage(named: "car.png")
-//    let button2 = UIButton(type: .custom)
-//    button2.imageView?.contentMode = .scaleAspectFit
-//    button2.setImage(image2, for: .normal)
-//    
-//    let image3 = UIImage(named: "walk.png")
-//    let button3 = UIButton(type: .custom)
-//    button3.imageView?.contentMode = .scaleAspectFit
-//    button3.setImage(image3, for: .normal)
-//   
-//    let image4 = UIImage(named: "run.png")
-//    let button4 = UIButton(type: .custom)
-//    button4.imageView?.contentMode = .scaleAspectFit
-//    button4.setImage(image4, for: .normal)
+    startB.isHidden = true
     
-//    UIButton * bikeButton = [UIButton :UIButtonTypeCustom];
-//    [bikeButton setContentMode:UIViewContentModeScaleAspectFill];
-//    [bikeButton setImage:@"bike.png" forState:UIControlStateNormal];
+
     // Do any additional setup after loading the view, typically from a nib.
   }
+  override func viewWillAppear(_ animated: Bool) {
+   super.viewWillAppear(animated)
+   // print("Activity:\(activity)")
+  }
+  
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+ 
  
 
 }
