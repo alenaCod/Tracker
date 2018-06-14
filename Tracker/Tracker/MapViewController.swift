@@ -12,6 +12,8 @@ import MapKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
   
+  let currentActivity = CurrentActivity.sharedInstance
+  
   @IBOutlet weak var theMap: MKMapView!
   
   @IBAction func CancelButton(_ sender: UIBarButtonItem) {
@@ -55,7 +57,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
       let destinationIndex = myLocations.count - 2
       
       let c1 = myLocations[sourceIndex].coordinate
+      
+      currentActivity.startPoint = (c1.latitude, c1.longitude)
       let c2 = myLocations[destinationIndex].coordinate
+      currentActivity.endPoint = (c2.latitude, c2.longitude)
+      print("c1: ", c1)
+      
       var a = [c1, c2]
       let polyline = MKPolyline(coordinates: &a, count: a.count)
       theMap.add(polyline)

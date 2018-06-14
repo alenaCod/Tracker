@@ -22,6 +22,7 @@ class ActivityViewController: UIViewController {
     countTimer.invalidate()
     second = 0
     timerLabel.text = timeFormatted(_second: second)
+    notActiveButton()
   }
   
   @IBAction func startButton(_ sender: Any) {
@@ -63,6 +64,9 @@ class ActivityViewController: UIViewController {
   func activeButton() {
     startB.isHidden = false
   }
+  func notActiveButton() {
+    startB.isHidden = true
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -76,7 +80,6 @@ class ActivityViewController: UIViewController {
    // print("Activity:\(activity)")
   }
   
-
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
