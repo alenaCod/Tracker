@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		2939650020A105890084059F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293964FF20A105890084059F /* User.swift */; };
+		2945AC5420D4454900AE155B /* Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2945AC5120D4454900AE155B /* Tracker.xcdatamodeld */; };
+		2945AC5620D449E700AE155B /* DBActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AC5520D449E700AE155B /* DBActivity.swift */; };
+		2945AC6120D45BE200AE155B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AC5920D45BE200AE155B /* CoreDataManager.swift */; };
+		2945AC6220D45BE200AE155B /* NSManagedObjectContext+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AC5A20D45BE200AE155B /* NSManagedObjectContext+Observers.swift */; };
+		2945AC6320D45BE200AE155B /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AC5B20D45BE200AE155B /* NSManagedObjectContext+Extensions.swift */; };
+		2945AC6420D45BE200AE155B /* EntityAndPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AC5C20D45BE200AE155B /* EntityAndPredicate.swift */; };
+		2945AC6720D45BE200AE155B /* TrakkersStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AC5F20D45BE200AE155B /* TrakkersStack.swift */; };
+		2945AC6820D45BE200AE155B /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945AC6020D45BE200AE155B /* Managed.swift */; };
 		295FB6DD20A4B84700E751F3 /* String+Trackers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FB6DC20A4B84700E751F3 /* String+Trackers.swift */; };
 		295FB6DF20A4B8EB00E751F3 /* Int+Double+Trackers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FB6DE20A4B8EB00E751F3 /* Int+Double+Trackers.swift */; };
 		29AB4ADB2095ABD1002C399B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB4ADA2095ABD1002C399B /* AppDelegate.swift */; };
@@ -25,6 +33,15 @@
 
 /* Begin PBXFileReference section */
 		293964FF20A105890084059F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2945AC5220D4454900AE155B /* Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tracker.xcdatamodel; sourceTree = "<group>"; };
+		2945AC5320D4454900AE155B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2945AC5520D449E700AE155B /* DBActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBActivity.swift; sourceTree = "<group>"; };
+		2945AC5920D45BE200AE155B /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2945AC5A20D45BE200AE155B /* NSManagedObjectContext+Observers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Observers.swift"; sourceTree = "<group>"; };
+		2945AC5B20D45BE200AE155B /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
+		2945AC5C20D45BE200AE155B /* EntityAndPredicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityAndPredicate.swift; sourceTree = "<group>"; };
+		2945AC5F20D45BE200AE155B /* TrakkersStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakkersStack.swift; sourceTree = "<group>"; };
+		2945AC6020D45BE200AE155B /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		295FB6DC20A4B84700E751F3 /* String+Trackers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Trackers.swift"; sourceTree = "<group>"; };
 		295FB6DE20A4B8EB00E751F3 /* Int+Double+Trackers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Double+Trackers.swift"; sourceTree = "<group>"; };
 		29AB4AD72095ABD1002C399B /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +81,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2945AC5720D449F100AE155B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2945AC5520D449E700AE155B /* DBActivity.swift */,
+				29D7517920D07F8500FE6E45 /* CurrentActivity.swift */,
+				293964FF20A105890084059F /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2945AC5820D45A6400AE155B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2945AC5920D45BE200AE155B /* CoreDataManager.swift */,
+				2945AC5C20D45BE200AE155B /* EntityAndPredicate.swift */,
+				2945AC6020D45BE200AE155B /* Managed.swift */,
+				2945AC5B20D45BE200AE155B /* NSManagedObjectContext+Extensions.swift */,
+				2945AC5A20D45BE200AE155B /* NSManagedObjectContext+Observers.swift */,
+				2945AC5F20D45BE200AE155B /* TrakkersStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		295FB6E020A4BC7000E751F3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,12 +135,13 @@
 			isa = PBXGroup;
 			children = (
 				29AB4ADA2095ABD1002C399B /* AppDelegate.swift */,
-				29D7517920D07F8500FE6E45 /* CurrentActivity.swift */,
 				29AB4ADC2095ABD1002C399B /* StatusViewController.swift */,
 				29AB4ADE2095ABD1002C399B /* ActivityViewController.swift */,
 				29AB4AF0209A3392002C399B /* ProfileViewController.swift */,
 				29D4BAAD20C551AB004A1A69 /* MapViewController.swift */,
-				293964FF20A105890084059F /* User.swift */,
+				2945AC5820D45A6400AE155B /* CoreData */,
+				2945AC5720D449F100AE155B /* Model */,
+				2945AC5120D4454900AE155B /* Tracker.xcdatamodeld */,
 				295FB6E020A4BC7000E751F3 /* Extension */,
 				29AB4AF4209A34E7002C399B /* MainTabBarController.swift */,
 				29AB4AE02095ABD1002C399B /* Main.storyboard */,
@@ -238,15 +279,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				29D7517A20D07F8500FE6E45 /* CurrentActivity.swift in Sources */,
+				2945AC6220D45BE200AE155B /* NSManagedObjectContext+Observers.swift in Sources */,
 				2939650020A105890084059F /* User.swift in Sources */,
 				29AB4ADF2095ABD1002C399B /* ActivityViewController.swift in Sources */,
+				2945AC6420D45BE200AE155B /* EntityAndPredicate.swift in Sources */,
 				29D4BAAE20C551AB004A1A69 /* MapViewController.swift in Sources */,
+				2945AC5420D4454900AE155B /* Tracker.xcdatamodeld in Sources */,
 				29AB4ADB2095ABD1002C399B /* AppDelegate.swift in Sources */,
+				2945AC6820D45BE200AE155B /* Managed.swift in Sources */,
+				2945AC5620D449E700AE155B /* DBActivity.swift in Sources */,
+				2945AC6120D45BE200AE155B /* CoreDataManager.swift in Sources */,
 				29AB4AF5209A34E7002C399B /* MainTabBarController.swift in Sources */,
+				2945AC6720D45BE200AE155B /* TrakkersStack.swift in Sources */,
 				295FB6DD20A4B84700E751F3 /* String+Trackers.swift in Sources */,
 				29AB4AF1209A3392002C399B /* ProfileViewController.swift in Sources */,
 				29AB4ADD2095ABD1002C399B /* StatusViewController.swift in Sources */,
 				295FB6DF20A4B8EB00E751F3 /* Int+Double+Trackers.swift in Sources */,
+				2945AC6320D45BE200AE155B /* NSManagedObjectContext+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +500,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2945AC5120D4454900AE155B /* Tracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2945AC5220D4454900AE155B /* Tracker.xcdatamodel */,
+				2945AC5320D4454900AE155B /* Model.xcdatamodel */,
+			);
+			currentVersion = 2945AC5220D4454900AE155B /* Tracker.xcdatamodel */;
+			path = Tracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 29AB4ACF2095ABD1002C399B /* Project object */;
 }

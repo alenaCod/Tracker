@@ -11,14 +11,13 @@ import UIKit
 class CurrentActivity {
   static let sharedInstance = CurrentActivity()
   var type: Int?
-//  var latitude:Double?
-//  var longitude:Double?
+  var duration: Int16?
+  var distance: Double?
+  var date: Date?
+  
+  
+
   var startPoint: (latitude: Double, longitude: Double)?
-  var endPoint: (latitude: Double, longitude: Double)?//CGPoint(x: Double, y: Double)
-  //latitude
-  //longitude
-  //[Double: Double]?
- // var endPoint
-  //var 
+  var endPoint: (latitude: Double, longitude: Double)?
   
 }

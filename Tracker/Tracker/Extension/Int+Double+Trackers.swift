@@ -21,3 +21,25 @@ extension Double {
     return String(self)
   }
 }
+
+extension Int16 {
+  
+  func toString() -> String {
+    return String(self)
+  }
+  
+  func toInt() -> Int {
+    return Int(self)
+  }
+}
+
+extension Int {
+  
+//  func toString() -> String {
+//    return String(self)
+//  }
+  
+  func toInt16() -> Int16 {
+    return Int16(self)
+  }
+}

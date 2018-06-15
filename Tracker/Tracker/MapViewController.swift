@@ -13,6 +13,7 @@ import MapKit
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
   
   let currentActivity = CurrentActivity.sharedInstance
+  let coredata = CoreDataManager.sharedInstance
   
   @IBOutlet weak var theMap: MKMapView!
   
@@ -79,4 +80,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     return nil
   }
-}
+  
+  @IBAction func saveD(_ sender: Any) {
+    currentActivity.endPoint = (20.0, 30.0)
+    currentActivity.startPoint = (10.0,15.0)
+   
+    currentActivity.date = Date()
+    currentActivity.distance = 3.400
+    currentActivity.duration = 34
+    currentActivity.type = 2
+    coredata.saveActivity(data: currentActivity) { 
+      print("saved:")
+    
+    }
+  }
+  
+  @IBAction func get(_ sender: Any) {
+    coredata.getActivities { [weak self] activities in
+       print("get activities:", activities)
+    }
+      print("get:")
+    }
+    
+  }
+  
+  
+//}
