@@ -10,7 +10,10 @@ import UIKit
 
 
 class StatusViewController: UIViewController {
+  var dbActivities = [DBActivity]()
   let currentUser = User.sharedInstance
+  let activity = CurrentActivity.sharedInstance
+  let coredata = CoreDataManager.sharedInstance
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,6 +25,13 @@ class StatusViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    coredata.getActivities {  [weak self] activities in   self?.dbActivities = activities
+     // tabl
+      
+      
+    }
+    
+    
     
     print("viewWillAppear user name: ", currentUser.name )
     print("viewWillAppear user he: ", currentUser.height)
