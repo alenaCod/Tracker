@@ -26,7 +26,7 @@ class StatusViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     coredata.getActivities {  [weak self] activities in   self?.dbActivities = activities
-     // tabl
+     // table view reload
       
       
     }

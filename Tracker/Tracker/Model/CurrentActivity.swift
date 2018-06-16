@@ -14,10 +14,6 @@ class CurrentActivity {
   var duration: Int16?
   var distance: Double?
   var date: Date?
-  
-  
-
   var startPoint: (latitude: Double, longitude: Double)?
   var endPoint: (latitude: Double, longitude: Double)?
-  
 }
