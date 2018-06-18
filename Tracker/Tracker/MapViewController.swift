@@ -112,7 +112,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     currentActivity.date = Date()
     currentActivity.distance = distanceInMeters
     currentActivity.duration = 34//distanceInMeters
-    currentActivity.type = 2
+    //currentActivity.type = 2
     coredata.saveActivity(data: currentActivity) { 
       print("saved:")
     

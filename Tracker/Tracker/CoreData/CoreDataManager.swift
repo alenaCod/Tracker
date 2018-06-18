@@ -1,9 +1,9 @@
 //
 //  CoreDataManager.swift
-//  TrakkersWard
+//  Tracker
 //
-//  Created by Svitlana Moiseyenko on 12/3/17.
-//  Copyright © 2017 Nicholas. All rights reserved.
+//  Created by Sveta on 6/17/18.
+//  Copyright © 2018 Alena. All rights reserved.
 //
 
 import Foundation

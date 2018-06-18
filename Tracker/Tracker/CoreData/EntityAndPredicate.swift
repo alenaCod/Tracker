@@ -1,9 +1,9 @@
 //
 //  EntityAndPredicate.swift
-//  Trakkers
+//  Tracker
 //
-//  Created by Svitlana Moiseyenko on 9/17/17.
-//  Copyright © 2017 Nicholas. All rights reserved.
+//  Created by Sveta on 6/17/18.
+//  Copyright © 2018 Alena. All rights reserved.
 //
 
 import Foundation

@@ -1,9 +1,9 @@
 //
-//  Notifications.swift
-//  Moody
+//  NSManagedObjectContext+Observers.swift
+//  Tracker
 //
-//  Created by Daniel Eggert on 24/05/2015.
-//  Copyright (c) 2015 objc.io. All rights reserved.
+//  Created by Sveta on 6/17/18.
+//  Copyright © 2018 Alena. All rights reserved.
 //
 
 import Foundation
@@ -71,7 +71,6 @@ extension NSManagedObjectContext {
             handler(wrappedNote)
         }
     }
- 
 }
 
 
