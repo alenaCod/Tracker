@@ -9,12 +9,15 @@
 import UIKit
 
 
-class StatusViewController: UIViewController {
+class StatusTabelViewController: UIViewController {
+  
   var dbActivities = [DBActivity]()
   let currentUser = User.sharedInstance
   let activity = CurrentActivity.sharedInstance
   let coredata = CoreDataManager.sharedInstance
 
+  @IBOutlet weak var tabelView: UITableView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -25,7 +28,9 @@ class StatusViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    coredata.getActivities {  [weak self] activities in   self?.dbActivities = activities
+    coredata.getActivities {  [weak self] activities in  
+      self?.dbActivities = activities
+      self?.tabelView.reloadData()
      // table view reload
       
       
@@ -40,7 +45,27 @@ class StatusViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-
+}
+extension StatusTabelViewController: UITableViewDelegate {
 
 }
 
+extension StatusTabelViewController: UITableViewDataSource {
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.dbActivities.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TrackerTableViewCell
+    
+    let dbAtivity = dbActivities[indexPath.row]
+    cell.updateCell(activity: dbAtivity)
+    
+    return cell
+
+}
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 151
+  }
+}

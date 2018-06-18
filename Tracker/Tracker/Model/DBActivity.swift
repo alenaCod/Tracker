@@ -85,6 +85,6 @@ final class DBActivity: NSManagedObject {
 
 extension DBActivity: Managed {
   static var defaultSortDescriptors: [NSSortDescriptor] {
-    return [NSSortDescriptor(key: #keyPath(data), ascending: true)]
+    return [NSSortDescriptor(key: #keyPath(data), ascending: false)]
 }
 }
