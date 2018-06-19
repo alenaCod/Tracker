@@ -29,10 +29,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     let duration = timeManager.getDuration()
     timeManager.killTimer()
     saveD(duration: duration, completion: { [weak self] in
-      DispatchQueue.main.async {
+     // DispatchQueue.main.async {
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ActivityFinished"), object: nil)
           self?.dismiss(animated: true, completion: nil)
-      }
+      //}
     })
     //stop time
     //save
@@ -80,17 +80,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
       
       let coordinate0 = CLLocation(latitude:c1.latitude , longitude: c1.longitude)
       
-     // currentActivity.startPoint = (c1.latitude, c1.longitude)
-      cor1 = c1.latitude
-      cor2 = c1.longitude
+      currentActivity.startPoint = (c1.latitude, c1.longitude)
+      self.cor1 = c1.latitude
+      self.cor2 = c1.longitude
       
-      currentActivity.startPoint = (cor1,cor2)
+     // currentActivity.startPoint = (self.cor1,self.cor2)
        let c2 = myLocations[destinationIndex].coordinate
       let coordinate1 = CLLocation(latitude:c2.latitude , longitude: c2.longitude)
-      //currentActivity.endPoint = (c2.latitude, c2.longitude)
+      currentActivity.endPoint = (c2.latitude, c2.longitude)
       cor3 = c2.latitude
       cor4 = c2.longitude
-      currentActivity.endPoint = (cor3, cor4)
+     // currentActivity.endPoint = (cor3, cor4) as! (latitude: Double, longitude: Double)
      
       print("c1: ", c1)
       print("cor1: ",cor1)
@@ -121,7 +121,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   func saveD(duration: Int, completion: @escaping ()->()) {
    
     currentActivity.startPoint = (cor1,cor2)
-     currentActivity.endPoint = (cor3,cor4)
+    currentActivity.endPoint = (cor3,cor4)
    
     currentActivity.date = Date()
     currentActivity.distance = distanceInMeters

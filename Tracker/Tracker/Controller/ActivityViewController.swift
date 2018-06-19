@@ -11,9 +11,10 @@ import UIKit
 class ActivityViewController: UIViewController {
   
   private let currentActivity = CurrentActivity.sharedInstance
-  private let timeManager = TimerManager.sharedInstance
+ // private let timeManager = TimerManager.sharedInstance
   //@IBOutlet weak var timerLabel: UILabel!
   
+ 
   @IBOutlet weak var startB: UIButton!
 
   @IBAction func startButton(_ sender: Any) {
@@ -45,7 +46,9 @@ class ActivityViewController: UIViewController {
   }
   
   @objc func notActiveButton() {
-    startB.isHidden = true
+    DispatchQueue.main.async {
+      self.startB.isHidden = true
+    }
   }
   
   deinit {
@@ -59,6 +62,11 @@ class ActivityViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+     UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white]
+//    UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white]
+
+    startB.layer.cornerRadius = 100
+  
     
     initNotifications()
     startB.isHidden = true
@@ -72,21 +80,8 @@ class ActivityViewController: UIViewController {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
-  
-  
- 
 
 }
 
-//extension ActivityViewController: TimerManagerDelegate {
-//  func updateProgress(_ seconds: Int) {
-//     timerLabel.text = timeFormatted(second: seconds)
-//  }
-//  
-//  func timerFinished() {
-//    
-//  }
-//  
-//  
-//}
+
 
