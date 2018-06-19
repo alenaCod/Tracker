@@ -83,9 +83,6 @@
                                 <state key="normal" title="STOP">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="stopButton:" destination="vDL-qy-aRW" eventType="touchUpInside" id="OKw-b6-KVf"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -127,7 +124,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="startB" destination="BQ1-Oc-cQB" id="TBK-Sg-KEO"/>
-                        <outlet property="timerLabel" destination="Mad-we-7AN" id="CAk-Yb-pLz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7q-0u-ZyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,43 +139,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hua-LZ-mbd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="464"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csW-a4-RR1">
-                                <rect key="frame" x="63" y="522" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveD:" destination="DVT-4k-x9g" eventType="touchUpInside" id="DYc-qj-vJX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urz-eG-DJe">
-                                <rect key="frame" x="267" y="522" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get"/>
-                                <connections>
-                                    <action selector="get:" destination="DVT-4k-x9g" eventType="touchUpInside" id="Laf-8d-Rry"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G94-8h-XJN">
+                                <rect key="frame" x="216" y="64" width="159" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Blb-FY-FCr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="G94-8h-XJN" firstAttribute="trailing" secondItem="913-ej-nRa" secondAttribute="trailing" id="GOo-li-p1b"/>
                             <constraint firstItem="Hua-LZ-mbd" firstAttribute="leading" secondItem="913-ej-nRa" secondAttribute="leading" id="Q86-fN-beh"/>
-                            <constraint firstItem="913-ej-nRa" firstAttribute="bottom" secondItem="Hua-LZ-mbd" secondAttribute="bottom" constant="154" id="Qq4-9R-1to"/>
+                            <constraint firstItem="G94-8h-XJN" firstAttribute="top" secondItem="913-ej-nRa" secondAttribute="top" id="mFc-vz-NF5"/>
                             <constraint firstItem="Hua-LZ-mbd" firstAttribute="trailing" secondItem="913-ej-nRa" secondAttribute="trailing" id="pYA-7Z-IUN"/>
+                            <constraint firstItem="G94-8h-XJN" firstAttribute="leading" secondItem="913-ej-nRa" secondAttribute="leading" constant="216" id="sOT-rG-Vde"/>
                             <constraint firstItem="Hua-LZ-mbd" firstAttribute="top" secondItem="UiN-nJ-Mz5" secondAttribute="top" id="tpG-0g-Sew"/>
+                            <constraint firstItem="913-ej-nRa" firstAttribute="bottom" secondItem="Hua-LZ-mbd" secondAttribute="bottom" constant="-49" id="w35-l8-A8n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="913-ej-nRa"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="dv6-L8-6QA">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WRX-5M-XMI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="WRX-5M-XMI">
                             <connections>
-                                <action selector="CancelButton:" destination="DVT-4k-x9g" id="jFG-BY-jqV"/>
+                                <action selector="saveButton:" destination="DVT-4k-x9g" id="JUV-eE-80P"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="theMap" destination="Hua-LZ-mbd" id="wbo-C6-bji"/>
+                        <outlet property="timerLabel" destination="G94-8h-XJN" id="eEg-HN-rkv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuu-D3-gQy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -349,7 +342,7 @@
                                                         <constraint firstAttribute="width" constant="100" id="u4y-ie-Ttq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZQ-Pm-eje">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZQ-Pm-eje">
                                                     <rect key="frame" x="114" y="11" width="97" height="49"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="49" id="JXV-Pq-jT3"/>
@@ -358,12 +351,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aON-aU-I0y">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aON-aU-I0y">
                                                     <rect key="frame" x="263" y="11" width="97" height="49"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="49" id="sCE-Cj-C9C"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -404,7 +397,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="0.43102525684931509" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="jri-3L-tyG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Status" id="obe-Fk-8sU"/>
@@ -444,7 +437,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ieF-My-kKi">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.61176470588235299" green="0.82745098039215681" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

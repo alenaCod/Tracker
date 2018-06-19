@@ -11,7 +11,11 @@ import UIKit
 
 class StatusTabelViewController: UIViewController {
   
-  var dbActivities = [DBActivity]()
+  var dbActivities = [DBActivity]() {
+    didSet {
+       tabelView.reloadData()
+    }
+  }
   let currentUser = User.sharedInstance
   let activity = CurrentActivity.sharedInstance
   let coredata = CoreDataManager.sharedInstance
@@ -28,9 +32,10 @@ class StatusTabelViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    coredata.getActivities {  [weak self] activities in  
-      self?.dbActivities = activities
-      self?.tabelView.reloadData()
+    coredata.getActivities {  [weak self] activities in
+      DispatchQueue.main.async {
+        self?.dbActivities = activities
+      }
      // table view reload
       
       

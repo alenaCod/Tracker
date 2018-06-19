@@ -10,37 +10,16 @@ import UIKit
 
 class ActivityViewController: UIViewController {
   
-  let currentActivity = CurrentActivity.sharedInstance
-  @IBOutlet weak var timerLabel: UILabel!
+  private let currentActivity = CurrentActivity.sharedInstance
+  private let timeManager = TimerManager.sharedInstance
+  //@IBOutlet weak var timerLabel: UILabel!
   
   @IBOutlet weak var startB: UIButton!
-  
-  var countTimer = Timer()
-  var second = 0
-  
-  @IBAction func stopButton(_ sender: Any) {
-    countTimer.invalidate()
-    second = 0
-    timerLabel.text = timeFormatted(_second: second)
-    notActiveButton()
-  }
-  
+
   @IBAction func startButton(_ sender: Any) {
-    countTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ActivityViewController.updateTimer), userInfo: nil, repeats: true)
+
   }
-  
-  @objc func updateTimer() {
-    second += 1
-    timerLabel.text = timeFormatted(_second: second)
-  }
-  
-  func timeFormatted(_second: Int) -> String {
-    let seconds: Int = second % 60
-    let minutes: Int = (second / 60) % 60
-    let hours: Int = second / 3600
-    return String(format: "%02d:%02d:%02d",hours, minutes, seconds)
-  }
-  
+
   @IBAction func bikeButton(_ sender: UIButton) {
    currentActivity.type = 1
     activeButton()
@@ -64,17 +43,27 @@ class ActivityViewController: UIViewController {
   func activeButton() {
     startB.isHidden = false
   }
-  func notActiveButton() {
+  
+  @objc func notActiveButton() {
     startB.isHidden = true
   }
   
+  deinit {
+    print("ActivityViewController deinit")
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+   func initNotifications() {
+    NotificationCenter.default.addObserver(self, selector: #selector(ActivityViewController.notActiveButton), name:NSNotification.Name(rawValue: "ActivityFinished"), object: nil)
+   }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    startB.isHidden = true
     
-
-    // Do any additional setup after loading the view, typically from a nib.
+    initNotifications()
+    startB.isHidden = true
   }
+  
   override func viewWillAppear(_ animated: Bool) {
    super.viewWillAppear(animated)
    // print("Activity:\(activity)")
@@ -82,10 +71,22 @@ class ActivityViewController: UIViewController {
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
- 
+  
+  
  
 
 }
+
+//extension ActivityViewController: TimerManagerDelegate {
+//  func updateProgress(_ seconds: Int) {
+//     timerLabel.text = timeFormatted(second: seconds)
+//  }
+//  
+//  func timerFinished() {
+//    
+//  }
+//  
+//  
+//}
 

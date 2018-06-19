@@ -14,6 +14,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   
   let currentActivity = CurrentActivity.sharedInstance
   let coredata = CoreDataManager.sharedInstance
+  let timeManager = TimerManager.sharedInstance
+  @IBOutlet weak var timerLabel: UILabel!
+  
   var cor1:CLLocationDegrees!
   var cor2:CLLocationDegrees!
   var cor3:CLLocationDegrees!
@@ -22,8 +25,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   var distanceInMeters:Double?
   @IBOutlet weak var theMap: MKMapView!
   
-  @IBAction func CancelButton(_ sender: UIBarButtonItem) {
-    self.dismiss(animated: true, completion: nil)
+  @IBAction func saveButton(_ sender: UIBarButtonItem) {
+    let duration = timeManager.getDuration()
+    timeManager.killTimer()
+    saveD(duration: duration, completion: { [weak self] in
+      DispatchQueue.main.async {
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ActivityFinished"), object: nil)
+          self?.dismiss(animated: true, completion: nil)
+      }
+    })
+    //stop time
+    //save
+    //
+
   }
   //  @IBOutlet weak var theLabel: UILabel!
   
@@ -32,7 +46,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    startButton()
     //Setup our Location Manager
     //manager = CLLocationManager()
     manager.delegate = self
@@ -104,18 +118,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     return nil
   }
   
-  @IBAction func saveD(_ sender: Any) {
+  func saveD(duration: Int, completion: @escaping ()->()) {
    
     currentActivity.startPoint = (cor1,cor2)
      currentActivity.endPoint = (cor3,cor4)
    
     currentActivity.date = Date()
     currentActivity.distance = distanceInMeters
-    currentActivity.duration = 34//distanceInMeters
-    //currentActivity.type = 2
+    currentActivity.duration = duration.toInt16()
     coredata.saveActivity(data: currentActivity) { 
-      print("saved:")
-    
+      completion()
     }
   }
   
@@ -125,8 +137,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
       print("get:")
     }
+ 
+  func startButton() {
+    timeManager.initialize(delegate: self)
+  }
+  
+  func timeFormatted(second: Int) -> String {
+    let seconds: Int = second % 60
+    let minutes: Int = (second / 60) % 60
+    let hours: Int = second / 3600
+    return String(format: "%02d:%02d:%02d",hours, minutes, seconds)
+    }
+  }
+
+extension MapViewController: TimerManagerDelegate {
+  func updateProgress(_ seconds: Int) {
+    timerLabel.text = timeFormatted(second: seconds)
+  }
+  
+  func timerFinished() {
     
   }
+  
+  
+}
   
   
 //}

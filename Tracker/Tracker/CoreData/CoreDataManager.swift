@@ -29,14 +29,6 @@ class CoreDataManager {
     private init() {
         self.mainContext = persistentContainer.viewContext
         self.privateContext = persistentContainer.newBackgroundContext()
-        //privateContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        // Add Observer
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(forName: .NSManagedObjectContextObjectsDidChange, object: nil, queue: nil) { note in
-//            self.privateContext.perform({
-//                self.privateContext.mergeChanges(fromContextDidSave: note) //TODO: think to remove
-//            })
-//        }
     }
     func getPrivateContext() -> NSManagedObjectContext {
         return self.privateContext
