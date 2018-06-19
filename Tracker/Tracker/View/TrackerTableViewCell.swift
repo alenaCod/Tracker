@@ -23,9 +23,9 @@ class TrackerTableViewCell: UITableViewCell {
   func updateCell(activity: DBActivity) {
    
     dateLabel.text = activity.data.monthDayYearFormat()
-    distanceLabel.text = activity.distance.toString()
+    distanceLabel.text = activity.distance.toString() + "m"
   //  durationLabel.text = activity.duration.toString()
-     durationLabel.text = Converter.stringifySecondCount(activity.duration.toInt(), useLongFormat: false)
+    durationLabel.text = Converter.stringifySecondCount(activity.duration.toInt(), useLongFormat: false)
     
     switch activity.typeActivity {
     case 1:

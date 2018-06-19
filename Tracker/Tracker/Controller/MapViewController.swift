@@ -17,10 +17,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   let timeManager = TimerManager.sharedInstance
   @IBOutlet weak var timerLabel: UILabel!
   
-  var cor1:CLLocationDegrees!
-  var cor2:CLLocationDegrees!
-  var cor3:CLLocationDegrees!
-  var cor4:CLLocationDegrees!
+  var c1:CLLocationCoordinate2D?
+  var c2:CLLocationCoordinate2D?
+ 
 //  var c2:Double
   var distanceInMeters:Double?
   @IBOutlet weak var theMap: MKMapView!
@@ -34,9 +33,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
           self?.dismiss(animated: true, completion: nil)
       //}
     })
-    //stop time
-    //save
-    //
 
   }
   //  @IBOutlet weak var theLabel: UILabel!
@@ -76,32 +72,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
       let sourceIndex = myLocations.count - 1
       let destinationIndex = myLocations.count - 2
       //let
-      let c1 = myLocations[sourceIndex].coordinate
+      c1 = myLocations[sourceIndex].coordinate
       
-      let coordinate0 = CLLocation(latitude:c1.latitude , longitude: c1.longitude)
+      guard let _c1 = c1 else {
+        return
+      }
       
-      currentActivity.startPoint = (c1.latitude, c1.longitude)
-      self.cor1 = c1.latitude
-      self.cor2 = c1.longitude
+      let coordinate0 = CLLocation(latitude:_c1.latitude , longitude: _c1.longitude)
+      
+      currentActivity.startPoint = (_c1.latitude, _c1.longitude)
+ 
       
      // currentActivity.startPoint = (self.cor1,self.cor2)
-       let c2 = myLocations[destinationIndex].coordinate
-      let coordinate1 = CLLocation(latitude:c2.latitude , longitude: c2.longitude)
-      currentActivity.endPoint = (c2.latitude, c2.longitude)
-      cor3 = c2.latitude
-      cor4 = c2.longitude
-     // currentActivity.endPoint = (cor3, cor4) as! (latitude: Double, longitude: Double)
-     
-      print("c1: ", c1)
-      print("cor1: ",cor1)
-      print("cor2: ",cor2)
-//      let coordinate0 = CLLocation(latitude:c1.latitude , longitude: c1.longitude)
-//      let coordinate1 = CLLocation(latitude:c2.latitude , longitude: c2.longitude)
-      
-       distanceInMeters = coordinate0.distance(from: coordinate1)
+        c2 = myLocations[destinationIndex].coordinate
+      guard let _c2 = c2 else {
+        return
+      }
+      let coordinate1 = CLLocation(latitude:_c2.latitude , longitude: _c2.longitude)
+      currentActivity.endPoint = (_c2.latitude, _c2.longitude)
+      distanceInMeters = coordinate0.distance(from: coordinate1)
      // print(String(format: "The distance to my buddy is %lf m", distanceInMeters))
       
-      var a = [c1, c2]
+      var a = [_c1, _c2]
       let polyline = MKPolyline(coordinates: &a, count: a.count)
       theMap.add(polyline)
     }
@@ -119,9 +111,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   }
   
   func saveD(duration: Int, completion: @escaping ()->()) {
-   
-    currentActivity.startPoint = (cor1,cor2)
-    currentActivity.endPoint = (cor3,cor4)
+    guard let _c1 = c1, let _c2 = c2 else {
+      completion()
+      return
+    }
+ 
+    currentActivity.startPoint = (_c1.latitude,_c1.longitude)
+    currentActivity.endPoint = (_c2.latitude,_c2.longitude)
    
     currentActivity.date = Date()
     currentActivity.distance = distanceInMeters

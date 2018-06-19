@@ -25,6 +25,12 @@ class StatusTabelViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    self.navigationController?.navigationBar.shadowImage = UIImage()
+    self.navigationController?.navigationBar.isTranslucent = true
+    self.navigationController?.view.backgroundColor = .clear
+    
     print("user name: ", currentUser.name)
     print("user he: ", currentUser.height)
     // Do any additional setup after loading the view, typically from a nib.
