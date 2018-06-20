@@ -23,7 +23,8 @@ class TrackerTableViewCell: UITableViewCell {
   func updateCell(activity: DBActivity) {
    
     dateLabel.text = activity.data.monthDayYearFormat()
-    distanceLabel.text = activity.distance.toString() + "m"
+    distanceLabel.text = //activity.distance.toString() + "m"
+    NSString(format: "%.2lf",activity.distance) as String + "m"
   //  durationLabel.text = activity.duration.toString()
     durationLabel.text = Converter.stringifySecondCount(activity.duration.toInt(), useLongFormat: false)
     
@@ -35,7 +36,7 @@ class TrackerTableViewCell: UITableViewCell {
     case 3:
       typeImage.image = #imageLiteral(resourceName: "walk")
     case 4:
-      typeImage.image = #imageLiteral(resourceName: "car")
+      typeImage.image = #imageLiteral(resourceName: "hill1")
       
     default:
       break

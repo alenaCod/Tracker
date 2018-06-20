@@ -63,6 +63,19 @@ class CoreDataManager {
             completion(activities)
         }
     }
+  
+    func getTotalDistance(completion: @escaping (_ totalDistance: Double)->()) {
+      privateContext.perform {
+        let request = DBActivity.sortedFetchRequest
+//        let predicate = NSPredicate(format: "@sum.distance")
+//        request.predicate = predicate
+        request.returnsObjectsAsFaults = false
+        let activities: [DBActivity] = try! self.privateContext.fetch(request)
+        let totalDistance = activities.map({$0.distance}).reduce(0, +)
+        print("Get distance: ", totalDistance)
+        completion(totalDistance)
+      }
+    }
     
     // DeviceModels
 //    func saveDeviceModels(data: [JSONDeviceModels]?, completion: @escaping ()->()) {

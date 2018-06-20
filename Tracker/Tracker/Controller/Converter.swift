@@ -200,7 +200,7 @@ class Converter {
       if hours > 0 {
         return NSString(format: "%02d:%02d:%02d", hours, minutes, remainingSeconds) as String
       } else if minutes > 0 {
-        return NSString(format: "%02d:%0d:%02d", minutes, remainingSeconds) as String
+        return NSString(format: "%02d:%02d:%02d",hours, minutes, remainingSeconds) as String
       } else {
         return NSString(format: "%02d:%02d:%02d", hours, minutes, remainingSeconds) as String
           //NSString(format: "%d", remainingSeconds) as String

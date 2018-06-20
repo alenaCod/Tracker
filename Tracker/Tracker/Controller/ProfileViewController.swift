@@ -13,25 +13,55 @@ class ProfileViewController: UIViewController {
 
   let currentUser = User.sharedInstance
   
+  
   @IBOutlet weak var scrollView: UIScrollView!
-  @IBOutlet weak var nameField: UITextField!
-  @IBOutlet weak var heightField: UITextField!
+  @IBOutlet weak var nameField: UITextField! {
+    didSet {
+      nameField.layer.borderColor = UIColor.white.cgColor
+      nameField.layer.borderWidth = 1
+      nameField.layer.cornerRadius = 7
+    }
+  }
+  @IBOutlet weak var heightField: UITextField! {
+    didSet {
+      heightField.addTarget(self, action: #selector(ProfileViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+    }
+  }
   @IBOutlet weak var weightField: UITextField!
   
  
-  var activeField: UITextField?
+ // var activeField: UITextField?
   var lastOffset: CGPoint!
   var keyboardHeight: CGFloat!
   
   override func viewDidLoad() {
         super.viewDidLoad()
+   
     configureTextFields()
-    configureTapGesture()
-    
+   configureTapGesture()
+    initNavigation()
     // Observe keyboard change
 //    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 //    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+  func initNavigation() {
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    self.navigationController?.navigationBar.shadowImage = UIImage()
+    self.navigationController?.navigationBar.isTranslucent = true
+    self.navigationController?.view.backgroundColor = .clear
+  }
+//  (void)setResultWithNumber:(int)theNumber{
+//  //  _isDecimal = false;
+//  //  _resultNumber = 0;
+//  if(!_isDecimal){
+//  _displayNumber *= 10;
+//  _displayNumber += theNumber;
+//  _resLabel.text = [NSString stringWithFormat:@"%.0lf",_displayNumber];
+//  } else {
+//  _resLabel.text = [_resLabel.text stringByAppendingString:[NSString stringWithFormat:@"%d",theNumber]];
+//  }
+//  _displayNumber = [_resLabel.text doubleValue];
+//  }
 
   override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,7 +70,7 @@ class ProfileViewController: UIViewController {
   
   @IBAction func save(_ sender: UIBarButtonItem) {
     currentUser.name = nameField.text ?? ""
-    currentUser.height = heightField.text?.toInt()
+  currentUser.height = heightField.text?.toInt()
     currentUser.weight = weightField.text?.toDouble()
   }
   
@@ -54,6 +84,7 @@ class ProfileViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    
     nameField.text = currentUser.name
     heightField.text = currentUser.height?.toString()
     weightField.text = currentUser.weight?.toString()
@@ -65,41 +96,46 @@ class ProfileViewController: UIViewController {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap))
     view.addGestureRecognizer(tapGesture)
   }
-  
+//
   @objc func handleTap() {
     print("Handle tap was called")
     view.endEditing(true)
   }
-  
+//
   private func configureTextFields() {
     nameField.delegate = self
     heightField.delegate = self
     weightField.delegate = self
   }
+
   
-  func returnTextView(gesture: UIGestureRecognizer) {
-    guard activeField != nil else {
-      return
-    }
-
-    activeField?.resignFirstResponder()
-    activeField = nil
+  @objc func textFieldDidChange(_ textField: UITextField) {
+    textField.text = textField.text?.toInt().toString()
   }
+  
+  
+//  func returnTextView(gesture: UIGestureRecognizer) {
+//    guard activeField != nil else {
+//      return
+//    }
+////
+//    activeField?.resignFirstResponder()
+//    activeField = nil
+//  }
 }
-
+//
   extension ProfileViewController:UITextFieldDelegate {
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//      activeField = textField
-//      lastOffset = self.scrollView.contentOffset
       return true
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-     // view.endEditing(true)
+ 
       textField.resignFirstResponder()
       return true
     }
+
 }
 
 //extension ProfileViewController {

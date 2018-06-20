@@ -12,7 +12,7 @@ import MapKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
   
-  let currentActivity = CurrentActivity.sharedInstance
+  var currentActivity = CurrentActivity.sharedInstance
   let coredata = CoreDataManager.sharedInstance
   let timeManager = TimerManager.sharedInstance
   @IBOutlet weak var timerLabel: UILabel!
@@ -21,7 +21,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   var c2:CLLocationCoordinate2D?
  
 //  var c2:Double
-  var distanceInMeters:Double?
+ // var distanceInMeters:Double?
   @IBOutlet weak var theMap: MKMapView!
   
   @IBAction func saveButton(_ sender: UIBarButtonItem) {
@@ -78,7 +78,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         return
       }
       
-      let coordinate0 = CLLocation(latitude:_c1.latitude , longitude: _c1.longitude)
+      //let coordinate0 = CLLocation(latitude:_c1.latitude , longitude: _c1.longitude)
       
       currentActivity.startPoint = (_c1.latitude, _c1.longitude)
  
@@ -88,10 +88,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
       guard let _c2 = c2 else {
         return
       }
-      let coordinate1 = CLLocation(latitude:_c2.latitude , longitude: _c2.longitude)
+      //let coordinate1 = CLLocation(latitude:_c2.latitude , longitude: _c2.longitude)
       currentActivity.endPoint = (_c2.latitude, _c2.longitude)
-      distanceInMeters = coordinate0.distance(from: coordinate1)
-     // print(String(format: "The distance to my buddy is %lf m", distanceInMeters))
+    
       
       var a = [_c1, _c2]
       let polyline = MKPolyline(coordinates: &a, count: a.count)
@@ -110,17 +109,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     return nil
   }
   
+  
+  func getDistance() -> Double {
+    guard let _c1 = c1, let _c2 = c2 else {
+      return 0
+    }
+    
+    let coordinate1 = CLLocation(latitude:_c1.latitude , longitude: _c1.longitude)
+    
+    let coordinate2 = CLLocation(latitude:_c2.latitude , longitude: _c2.longitude)
+    
+    
+    let distanceInMeters = coordinate1.distance(from: coordinate2)
+    print(String(format: "The distance to my buddy is %lf m", distanceInMeters))
+    
+    return distanceInMeters
+  }
+  
   func saveD(duration: Int, completion: @escaping ()->()) {
     guard let _c1 = c1, let _c2 = c2 else {
       completion()
       return
     }
- 
+
+    
     currentActivity.startPoint = (_c1.latitude,_c1.longitude)
     currentActivity.endPoint = (_c2.latitude,_c2.longitude)
    
     currentActivity.date = Date()
-    currentActivity.distance = distanceInMeters
+    currentActivity.distance = getDistance()
     currentActivity.duration = duration.toInt16()
     coredata.saveActivity(data: currentActivity) { 
       completion()
