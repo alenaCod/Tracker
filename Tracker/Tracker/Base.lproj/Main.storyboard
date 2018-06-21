@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_snow" translatesAutoresizingMaskIntoConstraints="NO" id="Y63-7B-QJh">
+                                <rect key="frame" x="0.0" y="-62" width="375" height="262"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avs-ra-1f5">
                                 <rect key="frame" x="0.0" y="200" width="375" height="403"/>
                                 <subviews>
@@ -188,9 +191,13 @@
                         <color key="backgroundColor" red="0.99607843137254903" green="0.66666666666666663" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="avs-ra-1f5" secondAttribute="bottom" id="3nR-z9-SQj"/>
+                            <constraint firstItem="Y63-7B-QJh" firstAttribute="top" secondItem="Pbx-LZ-4Hs" secondAttribute="top" constant="-62" id="5L6-T5-18g"/>
+                            <constraint firstItem="Y63-7B-QJh" firstAttribute="leading" secondItem="LSP-u4-bqE" secondAttribute="leading" id="C90-E6-Hgh"/>
                             <constraint firstItem="DFc-ol-atF" firstAttribute="trailing" secondItem="LSP-u4-bqE" secondAttribute="trailing" id="CGm-FM-p3d"/>
+                            <constraint firstItem="Y63-7B-QJh" firstAttribute="trailing" secondItem="LSP-u4-bqE" secondAttribute="trailing" id="FRA-dR-xgG"/>
                             <constraint firstItem="avs-ra-1f5" firstAttribute="leading" secondItem="LSP-u4-bqE" secondAttribute="leading" id="N2H-O2-LPz"/>
                             <constraint firstItem="avs-ra-1f5" firstAttribute="trailing" secondItem="LSP-u4-bqE" secondAttribute="trailing" id="O16-Fl-Q72"/>
+                            <constraint firstItem="avs-ra-1f5" firstAttribute="top" secondItem="Y63-7B-QJh" secondAttribute="bottom" id="Rk0-20-02W"/>
                             <constraint firstItem="avs-ra-1f5" firstAttribute="top" secondItem="DFc-ol-atF" secondAttribute="bottom" id="YLk-QC-gM7"/>
                             <constraint firstItem="DFc-ol-atF" firstAttribute="leading" secondItem="LSP-u4-bqE" secondAttribute="leading" id="hVq-cC-8ap"/>
                             <constraint firstItem="DFc-ol-atF" firstAttribute="top" secondItem="LSP-u4-bqE" secondAttribute="top" id="z8a-1D-EJ7"/>
@@ -646,6 +653,7 @@
     </scenes>
     <resources>
         <image name="bg_mountains" width="730" height="654"/>
+        <image name="bg_snow" width="310" height="292"/>
         <image name="flag" width="32" height="30"/>
         <image name="home" width="35" height="30"/>
         <image name="human" width="30" height="30"/>
