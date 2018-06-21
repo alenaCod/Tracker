@@ -17,6 +17,7 @@ class ActivityViewController: UIViewController {
   
   
   @IBOutlet weak var startB: UIButton!
+  @IBOutlet weak var lTotal: UILabel!
   
   @IBAction func startButton(_ sender: Any) {
     
@@ -93,11 +94,13 @@ class ActivityViewController: UIViewController {
     notActiveButton()
     setupTotalDistance()
   }
-  
+
   func setupTotalDistance() {
     coreDataManager.getTotalDistance(completion: { [weak self] result in
       print("distance total:", result)
-      
+      DispatchQueue.main.async {
+        self?.lTotal.text = NSString(format: "%.2lf",result) as String + "m"
+      }
     })
   }
   override func didReceiveMemoryWarning() {

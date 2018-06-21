@@ -15,6 +15,13 @@ class TrackerTableViewCell: UITableViewCell {
   @IBOutlet weak var durationLabel: UILabel!
   @IBOutlet weak var typeImage: UIImageView!
   
+  @IBOutlet weak var imgBase: UIView! {
+    didSet {
+        imgBase.layer.cornerRadius = imgBase.frame.height / 2
+        imgBase.clipsToBounds = true
+    }
+  }
+  
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,13 +37,13 @@ class TrackerTableViewCell: UITableViewCell {
     
     switch activity.typeActivity {
     case 1:
-      typeImage.image = #imageLiteral(resourceName: "bike")
+      typeImage.image = UIImage(named: "ic_bike")
     case 2:
-      typeImage.image = #imageLiteral(resourceName: "run")
+      typeImage.image = UIImage(named: "ic_run")
     case 3:
-      typeImage.image = #imageLiteral(resourceName: "walk")
+      typeImage.image = UIImage(named: "ic_walk")
     case 4:
-      typeImage.image = #imageLiteral(resourceName: "hill1")
+      typeImage.image = UIImage(named: "ic_hill")
     default:
       break
     }
