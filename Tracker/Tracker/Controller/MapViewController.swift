@@ -15,6 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   var currentActivity = CurrentActivity.sharedInstance
   let coredata = CoreDataManager.sharedInstance
   let timeManager = TimerManager.sharedInstance
+  
   @IBOutlet weak var timerLabel: UILabel!
   
   var c1:CLLocationCoordinate2D?
@@ -26,12 +27,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     let duration = timeManager.getDuration()
     timeManager.killTimer()
     saveD(duration: duration, completion: { [weak self] in
-     // DispatchQueue.main.async {
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ActivityFinished"), object: nil)
-          self?.dismiss(animated: true, completion: nil)
-      //}
+      self?.dismiss(animated: true, completion: nil)
     })
-
+    
   }
   
   var manager = CLLocationManager()
@@ -53,12 +52,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     theMap.showsUserLocation = true
     theMap.showsScale = true
   }
-
+  
   internal func locationManager(_ manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
-    //var myLocation = locations[0]
-   // theLabel.text = "\(locations[0])"
     myLocations.append(locations[0] )
-    
     let spanX = 0.01
     let spanY = 0.01
     let newRegion = MKCoordinateRegion(center: theMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
@@ -73,13 +69,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         return
       }
       currentActivity.startPoint = (_c1.latitude, _c1.longitude)
- 
+      
       c2 = myLocations[destinationIndex].coordinate
       guard let _c2 = c2 else {
         return
       }
       currentActivity.endPoint = (_c2.latitude, _c2.longitude)
-    
+      
       var a = [_c1, _c2]
       let polyline = MKPolyline(coordinates: &a, count: a.count)
       theMap.add(polyline)
@@ -119,11 +115,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
       completion()
       return
     }
-
     
     currentActivity.startPoint = (_c1.latitude,_c1.longitude)
     currentActivity.endPoint = (_c2.latitude,_c2.longitude)
-   
+    
     currentActivity.date = Date()
     currentActivity.distance = getDistance()
     currentActivity.duration = duration.toInt16()
@@ -132,13 +127,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
   }
   
-  @IBAction func get(_ sender: Any) {
-    coredata.getActivities { [weak self] activities in
-       print("get activities:", activities)
-    }
-      print("get:")
-    }
- 
   func startButton() {
     timeManager.initialize(delegate: self)
   }
@@ -148,8 +136,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     let minutes: Int = (second / 60) % 60
     let hours: Int = second / 3600
     return String(format: "%02d:%02d:%02d",hours, minutes, seconds)
-    }
   }
+}
 
 extension MapViewController: TimerManagerDelegate {
   func updateProgress(_ seconds: Int) {
@@ -157,11 +145,8 @@ extension MapViewController: TimerManagerDelegate {
   }
   
   func timerFinished() {
-    
   }
-  
-  
 }
-  
-  
-//}
+
+
+

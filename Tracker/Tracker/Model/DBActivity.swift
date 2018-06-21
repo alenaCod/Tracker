@@ -20,28 +20,15 @@ final class DBActivity: NSManagedObject {
   @NSManaged private(set) var startLongitude: Double
   @NSManaged private(set) var typeActivity: Int16
   
-  
- // @NSManaged public fileprivate(set) var devices: Set<Device>?
-  
   @discardableResult
   static func insert(into context: NSManagedObjectContext, item: CurrentActivity) -> DBActivity? {
     
     var activity: DBActivity?
-//
-//    guard let id = item.id else {
-//      return nil
-//    }
     
-//    if let existedDeviceType = self.objectByID(context: context, id: id) {
-//      deviceType = existedDeviceType
-//    } else {
-//      deviceType = context.insertObject()
-//      deviceType?.id = id.toInt16()
-//    }
     activity = context.insertObject()
     
     if let _data = item.date {
-         activity?.data = _data
+      activity?.data = _data
     }
     
     if let _dist = item.distance {
@@ -71,14 +58,6 @@ final class DBActivity: NSManagedObject {
     if let _active = item.type?.toInt16() {
       activity?.typeActivity = _active
     }
-    //activity?.distance = item.distance ?? 0
-    //activity?.duration = item.duration!
-    //activity?.endLatitude = (item.endPoint?.latitude)!
-//    activity?.endLongitude = (item.endPoint?.longitude)!
-//    activity?.startLatitude = (item.startPoint?.latitude)!
-//    activity?.startLongitude = (item.startPoint?.longitude)!
-//    activity?.typeActivity = (item.type?.toInt16())!
-    
     return activity
   }
 }
@@ -86,5 +65,5 @@ final class DBActivity: NSManagedObject {
 extension DBActivity: Managed {
   static var defaultSortDescriptors: [NSSortDescriptor] {
     return [NSSortDescriptor(key: #keyPath(data), ascending: false)]
-}
+  }
 }

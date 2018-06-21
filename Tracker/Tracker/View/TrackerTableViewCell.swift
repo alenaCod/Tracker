@@ -30,8 +30,7 @@ class TrackerTableViewCell: UITableViewCell {
   func updateCell(activity: DBActivity) {
    
     dateLabel.text = activity.data.monthDayYearFormat()
-    distanceLabel.text = //activity.distance.toString() + "m"
-    NSString(format: "%.2lf",activity.distance) as String + "m"
+    distanceLabel.text = NSString(format: "%.2lf",activity.distance) as String + "m"
   
     durationLabel.text = Converter.stringifySecondCount(activity.duration.toInt(), useLongFormat: false)
     

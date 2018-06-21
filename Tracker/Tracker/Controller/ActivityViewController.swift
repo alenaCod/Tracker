@@ -12,10 +12,7 @@ class ActivityViewController: UIViewController {
   
   private let currentActivity = CurrentActivity.sharedInstance
   private let coreDataManager = CoreDataManager.sharedInstance
-  // private let timeManager = TimerManager.sharedInstance
-  //@IBOutlet weak var timerLabel: UILabel!
-  
-  
+
   @IBOutlet weak var startB: UIButton!
   @IBOutlet weak var lTotal: UILabel!
   
@@ -38,7 +35,7 @@ class ActivityViewController: UIViewController {
     activeButton()
   }
   
-  @IBAction func car(_ sender: UIButton) {
+  @IBAction func mountain(_ sender: UIButton) {
     currentActivity.initActivity(type: 4) 
     activeButton()
   }

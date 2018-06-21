@@ -25,24 +25,24 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var heightField: UITextField! {
     didSet {
       heightField.addTarget(self, action: #selector(ProfileViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+      heightField.layer.borderColor = UIColor.white.cgColor
+      heightField.layer.borderWidth = 1
+      heightField.layer.cornerRadius = 7
     }
   }
   @IBOutlet weak var weightField: UITextField! {
     didSet {
-      weightField.addTarget(self, action: #selector(ProfileViewController.weightFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+      weightField.layer.borderColor = UIColor.white.cgColor
+      weightField.layer.borderWidth = 1
+      weightField.layer.cornerRadius = 7
     }
   }
   
- 
-  var activeField: UITextField?
-  var lastOffset: CGPoint!
-  var keyboardHeight: CGFloat!
   
   override func viewDidLoad() {
         super.viewDidLoad()
-   
     configureTextFields()
-   configureTapGesture()
+    configureTapGesture()
     initNavigation()
     }
   
@@ -59,18 +59,12 @@ class ProfileViewController: UIViewController {
     }
   
   @IBAction func save(_ sender: UIBarButtonItem) {
-    currentUser.name = nameField.text ?? ""
-  currentUser.height = heightField.text?.toInt()
-    currentUser.weight = weightField.text?.toDouble()
-  }
-  
-  @IBAction func saveButton(_ sender: UIButton) {
     view.endEditing(true)
-    
     currentUser.name = nameField.text ?? ""
     currentUser.height = heightField.text?.toInt()
     currentUser.weight = weightField.text?.toDouble()
   }
+  
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -79,14 +73,15 @@ class ProfileViewController: UIViewController {
     heightField.text = currentUser.height?.toString()
     weightField.text = currentUser.weight?.toString()
     
-    print("viewWillAppear user name: ", currentUser.name)
-    print("viewWillAppear user he: ", currentUser.height)
+//    print("viewWillAppear user name: ", currentUser.name)
+//    print("viewWillAppear user he: ", currentUser.height)
   }
+  
   private func configureTapGesture() {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap))
     view.addGestureRecognizer(tapGesture)
   }
-//
+  
   @objc func handleTap() {
     print("Handle tap was called")
     view.endEditing(true)
@@ -102,21 +97,8 @@ class ProfileViewController: UIViewController {
   @objc func textFieldDidChange(_ textField: UITextField) {
     textField.text = textField.text?.toInt().toString()
   }
-  
-  @objc func weightFieldDidChange(_ textField: UITextField){
-    textField.text = textField.text?.toDouble().toString()
-  }
-  
-  func returnTextView(gesture: UIGestureRecognizer) {
-    guard activeField != nil else {
-      return
-    }
-//
-    activeField?.resignFirstResponder()
-    activeField = nil
-  }
 }
-//
+
   extension ProfileViewController:UITextFieldDelegate {
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -124,54 +106,10 @@ class ProfileViewController: UIViewController {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
- 
       textField.resignFirstResponder()
       return true
     }
 
 }
-
-//extension ProfileViewController {
-//
-//  @objc func keyboardWillShow(notification:NSNotification){
-//    self.scrollView.isScrollEnabled = true
-//    var info = notification.userInfo!
-//    let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-//    let contentInsets:UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
-//    self.scrollView.contentInset = contentInsets
-//    self.scrollView.scrollIndicatorInsets = contentInsets
-//
-//    var aRect: CGRect = self.view.frame
-//    aRect.size.height -= keyboardSize!.height
-//    if let activeField = self.activeField {
-//      if (!aRect.contains(activeField.frame.origin)){
-//        self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
-//      }
-//    }
-//  }
-//
-//   @objc func keyboardWillHide(notification:NSNotification){
-//
-//    var info = notification.userInfo!
-//    let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-//    let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-//    self.scrollView.contentInset = contentInsets
-//    self.scrollView.scrollIndicatorInsets = contentInsets
-//
-//    self.scrollView.isScrollEnabled = false
-//
-//  }
-//}
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 
