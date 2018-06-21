@@ -44,14 +44,16 @@ class ActivityViewController: UIViewController {
   }
   
   func activeButton() {
-    startB.isHidden = false
+    startB.alpha = 1.0
+    startB.isUserInteractionEnabled = true
   }
   
   
   
   @objc func notActiveButton() {
     DispatchQueue.main.async {
-      self.startB.isHidden = true
+      self.startB.alpha = 0.7
+      self.startB.isUserInteractionEnabled = false
     }
   }
   
