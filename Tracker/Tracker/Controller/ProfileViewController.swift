@@ -27,10 +27,14 @@ class ProfileViewController: UIViewController {
       heightField.addTarget(self, action: #selector(ProfileViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
     }
   }
-  @IBOutlet weak var weightField: UITextField!
+  @IBOutlet weak var weightField: UITextField! {
+    didSet {
+      weightField.addTarget(self, action: #selector(ProfileViewController.weightFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+    }
+  }
   
  
- // var activeField: UITextField?
+  var activeField: UITextField?
   var lastOffset: CGPoint!
   var keyboardHeight: CGFloat!
   
@@ -40,28 +44,14 @@ class ProfileViewController: UIViewController {
     configureTextFields()
    configureTapGesture()
     initNavigation()
-    // Observe keyboard change
-//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+  
   func initNavigation() {
     self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     self.navigationController?.navigationBar.shadowImage = UIImage()
     self.navigationController?.navigationBar.isTranslucent = true
     self.navigationController?.view.backgroundColor = .clear
   }
-//  (void)setResultWithNumber:(int)theNumber{
-//  //  _isDecimal = false;
-//  //  _resultNumber = 0;
-//  if(!_isDecimal){
-//  _displayNumber *= 10;
-//  _displayNumber += theNumber;
-//  _resLabel.text = [NSString stringWithFormat:@"%.0lf",_displayNumber];
-//  } else {
-//  _resLabel.text = [_resLabel.text stringByAppendingString:[NSString stringWithFormat:@"%d",theNumber]];
-//  }
-//  _displayNumber = [_resLabel.text doubleValue];
-//  }
 
   override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,15 +103,18 @@ class ProfileViewController: UIViewController {
     textField.text = textField.text?.toInt().toString()
   }
   
+  @objc func weightFieldDidChange(_ textField: UITextField){
+    textField.text = textField.text?.toDouble().toString()
+  }
   
-//  func returnTextView(gesture: UIGestureRecognizer) {
-//    guard activeField != nil else {
-//      return
-//    }
-////
-//    activeField?.resignFirstResponder()
-//    activeField = nil
-//  }
+  func returnTextView(gesture: UIGestureRecognizer) {
+    guard activeField != nil else {
+      return
+    }
+//
+    activeField?.resignFirstResponder()
+    activeField = nil
+  }
 }
 //
   extension ProfileViewController:UITextFieldDelegate {

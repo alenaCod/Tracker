@@ -19,9 +19,7 @@ final class TimerManager {
 
   fileprivate weak var delegate: TimerManagerDelegate?
   fileprivate var secondsCounter = 0
-  //fileprivate var duration = 0
   fileprivate var timer: Timer?
-  //fileprivate var isReverseCounting = false
   
   private init() {
     
@@ -32,10 +30,8 @@ final class TimerManager {
   }
   
   func initialize(delegate: TimerManagerDelegate?) {
-    //self.duration = duration
     self.delegate = delegate
-    //self.isReverseCounting = isReverseCounting
-    secondsCounter = 0 //isReverseCounting ? duration : startSeconds
+    secondsCounter = 0 
     startTimer()
   }
   

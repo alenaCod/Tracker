@@ -25,7 +25,7 @@ class TrackerTableViewCell: UITableViewCell {
     dateLabel.text = activity.data.monthDayYearFormat()
     distanceLabel.text = //activity.distance.toString() + "m"
     NSString(format: "%.2lf",activity.distance) as String + "m"
-  //  durationLabel.text = activity.duration.toString()
+  
     durationLabel.text = Converter.stringifySecondCount(activity.duration.toInt(), useLongFormat: false)
     
     switch activity.typeActivity {
@@ -37,11 +37,8 @@ class TrackerTableViewCell: UITableViewCell {
       typeImage.image = #imageLiteral(resourceName: "walk")
     case 4:
       typeImage.image = #imageLiteral(resourceName: "hill1")
-      
     default:
       break
     }
-    //typeImage.image = activity.typeActivity//[UIImage imageNamed:activity.image];
   }
-// playStopButton.setImage(#imageLiteral(resourceName: "pause"), for: UIControlState.normal)
 }

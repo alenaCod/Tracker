@@ -19,9 +19,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   
   var c1:CLLocationCoordinate2D?
   var c2:CLLocationCoordinate2D?
- 
-//  var c2:Double
- // var distanceInMeters:Double?
+  
   @IBOutlet weak var theMap: MKMapView!
   
   @IBAction func saveButton(_ sender: UIBarButtonItem) {
@@ -35,7 +33,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     })
 
   }
-  //  @IBOutlet weak var theLabel: UILabel!
   
   var manager = CLLocationManager()
   var myLocations: [CLLocation] = []
@@ -44,7 +41,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     super.viewDidLoad()
     startButton()
     //Setup our Location Manager
-    //manager = CLLocationManager()
     manager.delegate = self
     manager.desiredAccuracy = kCLLocationAccuracyBest
     manager.requestWhenInUseAuthorization()
@@ -71,27 +67,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     if (myLocations.count > 1){
       let sourceIndex = myLocations.count - 1
       let destinationIndex = myLocations.count - 2
-      //let
       c1 = myLocations[sourceIndex].coordinate
       
       guard let _c1 = c1 else {
         return
       }
-      
-      //let coordinate0 = CLLocation(latitude:_c1.latitude , longitude: _c1.longitude)
-      
       currentActivity.startPoint = (_c1.latitude, _c1.longitude)
  
-      
-     // currentActivity.startPoint = (self.cor1,self.cor2)
-        c2 = myLocations[destinationIndex].coordinate
+      c2 = myLocations[destinationIndex].coordinate
       guard let _c2 = c2 else {
         return
       }
-      //let coordinate1 = CLLocation(latitude:_c2.latitude , longitude: _c2.longitude)
       currentActivity.endPoint = (_c2.latitude, _c2.longitude)
     
-      
       var a = [_c1, _c2]
       let polyline = MKPolyline(coordinates: &a, count: a.count)
       theMap.add(polyline)
