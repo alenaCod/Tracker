@@ -408,18 +408,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="00:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aON-aU-I0y">
-                                                            <rect key="frame" x="68" y="5.5" width="200" height="20"/>
+                                                            <rect key="frame" x="68" y="6" width="168" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="FQt-H1-F0E"/>
+                                                                <constraint firstAttribute="width" constant="168" id="qR5-Fz-OwY"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.0m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZQ-Pm-eje">
-                                                            <rect key="frame" x="276" y="0.0" width="91" height="49"/>
+                                                            <rect key="frame" x="244" y="0.0" width="123" height="49"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="91" id="YYV-t3-9jX"/>
+                                                                <constraint firstAttribute="width" constant="123" id="YYV-t3-9jX"/>
                                                                 <constraint firstAttribute="height" constant="49" id="mO0-vc-tWS"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="26"/>
@@ -427,7 +428,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 mar 2018" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4J-ZH-hZK">
-                                                            <rect key="frame" x="68" y="29.5" width="200" height="20"/>
+                                                            <rect key="frame" x="68" y="30" width="168" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="PVf-V9-yLX"/>
                                                             </constraints>
@@ -460,9 +461,9 @@
                                                     <constraints>
                                                         <constraint firstItem="OEi-hV-lvb" firstAttribute="leading" secondItem="8cD-6k-yMb" secondAttribute="leading" constant="8" id="Fvz-A8-yDO"/>
                                                         <constraint firstAttribute="bottom" secondItem="s4J-ZH-hZK" secondAttribute="bottom" id="GL7-hz-e23"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aON-aU-I0y" secondAttribute="trailing" constant="20" symbolic="YES" id="NZi-wj-jvj"/>
                                                         <constraint firstAttribute="trailing" secondItem="UZQ-Pm-eje" secondAttribute="trailing" constant="8" id="aec-Or-UVP"/>
                                                         <constraint firstItem="OEi-hV-lvb" firstAttribute="centerY" secondItem="8cD-6k-yMb" secondAttribute="centerY" id="bLy-kh-ObU"/>
-                                                        <constraint firstItem="UZQ-Pm-eje" firstAttribute="leading" secondItem="aON-aU-I0y" secondAttribute="trailing" constant="8" id="ecV-RP-kwp"/>
                                                         <constraint firstItem="UZQ-Pm-eje" firstAttribute="centerY" secondItem="8cD-6k-yMb" secondAttribute="centerY" id="g4Y-4f-aEN"/>
                                                         <constraint firstAttribute="height" constant="50" id="gnd-PU-aUx"/>
                                                         <constraint firstItem="UZQ-Pm-eje" firstAttribute="leading" secondItem="s4J-ZH-hZK" secondAttribute="trailing" constant="8" id="hOG-IK-q5W"/>
