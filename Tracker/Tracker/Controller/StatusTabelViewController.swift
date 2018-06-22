@@ -18,6 +18,7 @@ class StatusTabelViewController: UIViewController {
   }
   
   let coredata = CoreDataManager.sharedInstance
+  let currentActivity = CurrentActivity.sharedInstance
   
   @IBOutlet weak var tabelView: UITableView!
   

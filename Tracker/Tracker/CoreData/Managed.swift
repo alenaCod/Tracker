@@ -73,13 +73,5 @@ extension Managed where Self: NSManagedObject {
     static func objectByIdAndRelatedID(context: NSManagedObjectContext, id: Int, relationId: Int, relationName: String) -> Self? {
         return self.findOrFetch(in: context, matching: NSPredicate(format: "id == %d AND \(relationName).id == %d", id, relationId))
     }
-    
-    // TODO: CR array should be
-    static func objectByRelatedIDs(context: NSManagedObjectContext, locationId: Int, deviceTypeId: Int) -> Self? {
-        return self.findOrFetch(in: context, matching: NSCompoundPredicate(andPredicateWithSubpredicates:[
-            NSPredicate(format: "deviceType.id == %d", deviceTypeId),
-            NSPredicate(format: "location.id == %d", locationId)]
-        ))
-    }
 }
 
